@@ -5,19 +5,14 @@ def leituraMatriz(txt):
         matriz  = [linha.strip().split() for linha in linhas]
         for y, subLista in enumerate(matriz):
             for x, valor in enumerate(subLista):
-                 if valor not in ['0', '4', '5']:
+                 if not valor.isdigit():
                     if valor == 'R':
-                        coordenadas['R'] = x, y
-                    elif valor == 'A':
-                        coordenadas['A'] = x, y
-                    elif valor == 'B':
-                        coordenadas['B'] = x, y
-                    elif valor == 'C':
-                        coordenadas['C'] = x, y
-                    elif valor == 'D':
-                        coordenadas['D'] = x, y
+                        coordenadas['R'] = x + 1, y
+                    else:
+                        coordenadas[valor] = x + 1, y
+                    
 
-
+#Dicionario com os valores da distancia entre cada par de pontos
 def calcDistanciaDoisPontos(dicionario):
     livroCoords = {}
     for key, value in dicionario.items():
@@ -27,6 +22,7 @@ def calcDistanciaDoisPontos(dicionario):
             else:
                 livroCoords[key + chave] = abs(value[0] - valor[0]) + abs(value[1] - valor[1])
     print(livroCoords)
+    return livroCoords
 
 leituraMatriz("matriz.txt")
 calcDistanciaDoisPontos(coordenadas)
