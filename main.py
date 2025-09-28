@@ -6,9 +6,6 @@ def leituraMatriz(txt):
         for y, subLista in enumerate(matriz):
             for x, valor in enumerate(subLista):
                  if not valor.isdigit():
-                    if valor == 'R':
-                        coordenadas['R'] = x + 1, y
-                    else:
                         coordenadas[valor] = x + 1, y
                     
 
